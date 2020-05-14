@@ -1,0 +1,7 @@
+numpy
+Pillow
+triangle
+gldw
+freetype-py
+vispy
+p5
