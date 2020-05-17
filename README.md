@@ -36,7 +36,6 @@ Note that you have to close and reopen any existing console windows for these ch
 ##### macOS/Linux
 ```
 export PATH=/glfw-3.2.1.bin.WIN64/lib-mingw-w64:$PATH
-
 ```
 Note that if you wish to set the PATH for all users, you need to log in as root in the bash shell
 ## Results
