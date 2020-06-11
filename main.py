@@ -1,25 +1,33 @@
-from p5 import *
 
-rectangle = None
+from p5 import setup, draw, size, background, run
+import numpy as np
+from boid import Boid
+
+
+width = 1000
+height = 1000
+
+flock = [Boid(*np.random.rand(2)*1000, width, height) for _ in range(50)]
+
 
 def setup():
-        size(640, 260)
-        rectangle = PShape()
-        with rectangle.edit():
-                rectangle.add_vertex((0, 0))
-                rectangle.add_vertex((50, 0))
-                rectangle.add_vertex((50, 100))
-                rectangle.add_vertex((0, 100))
+    #this happens just once
+    size(width, height) #instead of create_canvas
 
-        rectangle.stroke = color(255)
-        rectangle.stroke_weight = 4
-        rectangle._fill = color(127)
 
 def draw():
-        background(51)
-        translate(mouse_x, mouse_y)
-        rectangle.set_fill(color(remap(mouse_x, (0, width), (0, 255))))
-        draw_shape(rectangle)
+    global flock
 
-if __name__ == '__main__':
-    run()
+
+    background(30, 30, 47)
+
+    for boid in flock:
+        boid.edges()
+        boid.apply_behaviour(flock)
+        boid.update()
+        boid.show()
+
+
+#run(frame_rate=100)
+run(frame_rate=200)
+#run()
